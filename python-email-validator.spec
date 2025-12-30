@@ -3,7 +3,7 @@
 
 Name:		python-email-validator
 Version:	2.2.0
-Release:	2
+Release:	3
 Source0:	https://files.pythonhosted.org/packages/source/e/%{uname}/%{uname}-%{version}.tar.gz
 Summary:	A robust email address syntax and deliverability validation library
 URL:		https://pypi.org/project/email-validator/
