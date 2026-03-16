@@ -1,22 +1,24 @@
 %define module email-validator
-%define uname email_validator
+%define oname email_validator
 
 Name:		python-email-validator
-Version:	2.2.0
-Release:	3
-Source0:	https://files.pythonhosted.org/packages/source/e/%{uname}/%{uname}-%{version}.tar.gz
+Version:	2.3.0
+Release:	1
 Summary:	A robust email address syntax and deliverability validation library
-URL:		https://pypi.org/project/email-validator/
 License:	Unlicense
 Group:		Development/Python
+URL:		https://github.com/JoshData/python-email-validator
+Source0:	%{URL}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildSystem:	python
 BuildArch:	noarch
 
 BuildRequires:	python
-BuildRequires:	python%{pyver}dist(setuptools)
-BuildRequires:	python%{pyver}dist(idna)
 BuildRequires:	python%{pyver}dist(dnspython)
-BuildRequires:	python%{pyver}dist(pytest)
+BuildRequires:	python%{pyver}dist(idna)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(wheel)
+
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 
@@ -55,17 +57,13 @@ Key features:
   Python type annotations are used.
 
 
-%prep
-%autosetup -n %{uname}-%{version} -p1
-
-%build
-%py_build
-
-%install
-%py_install
+%prep -a
+# Remove bundled egg-info
+rm -rf %{oname}.egg-info
 
 %files
-%{_bindir}/%{uname}
-%{python3_sitelib}/%{uname}
-%{python3_sitelib}/%{uname}-%{version}.dist-info
+%doc README.md
 %license LICENSE
+%{_bindir}/%{oname}
+%{python3_sitelib}/%{oname}
+%{python3_sitelib}/%{oname}-%{version}.dist-info
