@@ -3,7 +3,7 @@
 
 Name:		python-email-validator
 Version:	2.3.0
-Release:	1
+Release:	2
 Summary:	A robust email address syntax and deliverability validation library
 License:	Unlicense
 Group:		Development/Python
